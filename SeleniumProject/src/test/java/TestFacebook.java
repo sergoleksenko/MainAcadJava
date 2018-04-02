@@ -8,8 +8,12 @@ import org.testng.annotations.Test;
  */
 public class TestFacebook {
 
-    private final String EMAIL = "serg.oleksenko@gmail.com";
-    private final String PASSWORD = "Oleksenko_Sergey";
+    /*
+    Input your own email/password for Facebook
+    Also you have to copy chrome driver for your OS into SeleniumProject/drivers directory
+    */
+    private final String EMAIL = "";
+    private final String PASSWORD = "";
 
     @BeforeClass
     public void openBrowser() {
