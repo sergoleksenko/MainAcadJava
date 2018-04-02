@@ -12,7 +12,15 @@ public class Browser {
     public static WebDriver browser;
 
     public static void open() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver");
+        String chromeDriver;
+        if (System.getProperty("os.name").equals("Mac OS X")) {
+            chromeDriver = "chromedriver";
+        }
+        else {
+            chromeDriver = "chromedriver.exe";
+        }
+
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/" + chromeDriver);
         browser = new ChromeDriver();
         maximizeBrowser();
     }
