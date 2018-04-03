@@ -13,6 +13,7 @@ public class Browser {
 
     public static void open() {
         String chromeDriver;
+
         if (System.getProperty("os.name").equals("Mac OS X")) {
             chromeDriver = "chromedriver";
         }
