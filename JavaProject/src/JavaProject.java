@@ -11,8 +11,7 @@ public class JavaProject {
         try {
             System.out.println("Exception handling in try/catch:");
             System.out.println(i / 0);
-        }
-        catch (Exception ex) {
+        } catch (ArithmeticException ex) {
             System.out.println("\tSorry. You tried " + i + " " + ex.getMessage());
         }
 
