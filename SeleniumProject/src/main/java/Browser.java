@@ -2,7 +2,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by Serg on 4/2/18.
@@ -16,8 +15,7 @@ public class Browser {
 
         if (System.getProperty("os.name").equals("Mac OS X")) {
             chromeDriver = "chromedriver";
-        }
-        else {
+        } else {
             chromeDriver = "chromedriver.exe";
         }
 
@@ -39,6 +37,6 @@ public class Browser {
     public static FacebookStartPage openWebPage(String url) {
         browser.get(url);
 
-        return PageFactory.initElements(browser, FacebookStartPage.class);
+        return new FacebookStartPage();
     }
 }

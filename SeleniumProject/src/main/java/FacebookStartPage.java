@@ -1,11 +1,10 @@
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by Serg on 4/2/18.
  */
-public class FacebookStartPage {
+public class FacebookStartPage extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class, 'menu_login_container')]//input[@type = 'email']")
     private WebElement emailField;
@@ -21,6 +20,6 @@ public class FacebookStartPage {
         passwordField.sendKeys(password);
         logInButton.click();
 
-        return PageFactory.initElements(Browser.browser, FacebookHomePage.class);
+        return new FacebookHomePage();
     }
 }

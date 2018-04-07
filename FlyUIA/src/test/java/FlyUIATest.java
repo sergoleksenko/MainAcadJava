@@ -1,10 +1,14 @@
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 
 /**
  * Created by Serg on 4/4/18.
@@ -19,8 +23,7 @@ public class FlyUIATest {
 
         if (System.getProperty("os.name").equals("Mac OS X")) {
             chromeDriver = "chromedriver";
-        }
-        else {
+        } else {
             chromeDriver = "chromedriver.exe";
         }
 
@@ -47,16 +50,13 @@ public class FlyUIATest {
 
         browser.findElement(By.className("ensurance__button-full-width")).click();
 
-        WebElement fromInput = browser.findElement(By.id("mat-input-0"));
-        fromInput.sendKeys("Херсон");
+        browser.findElement(By.id("mat-input-0")).sendKeys("Херсон");
         (new WebDriverWait(browser, 5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class = 'ng-tns-c11-3']"))).click();
 
-        WebElement toInput = browser.findElement(By.id("mat-input-1"));
-        toInput.sendKeys("Київ");
+        browser.findElement(By.id("mat-input-1")).sendKeys("Київ");
         (new WebDriverWait(browser, 5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class = 'ng-tns-c11-4']"))).click();
 
         System.out.println(browser.findElement(By.xpath("//input[@id = 'mat-input-0']/parent::div/descendant::div[last()]")).getText());
         System.out.println(browser.findElement(By.xpath("//input[@id = 'mat-input-1']/parent::div/descendant::div[last()]")).getText());
-
     }
 }
