@@ -12,8 +12,8 @@ public class TestFacebook {
     Input your own email/password for Facebook
     Also you have to copy chrome driver for your OS into SeleniumProject/drivers directory
     */
-    private static final String EMAIL = "";
-    private static final String PASSWORD = "";
+    //private static final String EMAIL = "";
+    //private static final String PASSWORD = "";
 
     @BeforeClass
     public void openBrowser() {
@@ -27,7 +27,7 @@ public class TestFacebook {
 
     @Test
     public void loginTest() {
-        FacebookHomePage facebookHomePage = Browser.openWebPage("https://www.facebook.com").login(EMAIL, PASSWORD);
+        FacebookHomePage facebookHomePage = Browser.openWebPage("https://www.facebook.com").login(System.getProperty("email"), System.getProperty("password"));
         Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed());
     }
 }
