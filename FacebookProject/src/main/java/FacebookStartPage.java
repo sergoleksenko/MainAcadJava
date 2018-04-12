@@ -16,9 +16,14 @@ public class FacebookStartPage extends BasePage {
     private WebElement logInButton;
 
     public FacebookHomePage login(String email, String password) {
-        emailField.sendKeys(email);
-        passwordField.sendKeys(password);
-        logInButton.click();
+        try {
+            emailField.sendKeys(email);
+            passwordField.sendKeys(password);
+            logInButton.click();
+            logger.info("Login success");
+        } catch (Exception ex) {
+            logger.error("Can't login\n" + ex.getMessage());
+        }
 
         return new FacebookHomePage();
     }

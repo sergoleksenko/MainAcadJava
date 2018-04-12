@@ -1,3 +1,4 @@
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -10,6 +11,15 @@ public class FacebookHomePage extends BasePage {
     private WebElement userProfileLink;
 
     public boolean isUserProfileLinkDisplayed() {
-        return userProfileLink.isDisplayed();
+        boolean userProfileLink = false;
+
+        try {
+            userProfileLink = this.userProfileLink.isDisplayed();
+            logger.info("Check data on the Home page");
+        } catch (NoSuchElementException ex) {
+            logger.error("Element not found. " + this.userProfileLink);
+        }
+
+        return userProfileLink;
     }
 }
