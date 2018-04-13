@@ -34,8 +34,8 @@ public class Browser {
         browser.manage().window().setSize(new Dimension(1920, 1080));
     }
 
-    public static FacebookStartPage openWebPage(String url) {
-        browser.get(url);
+    public static FacebookStartPage openFacebook() {
+        browser.get("https://www.facebook.com");
 
         return new FacebookStartPage();
     }

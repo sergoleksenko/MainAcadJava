@@ -27,7 +27,7 @@ public class TestFacebook {
 
     @Test
     public void loginTest() {
-        FacebookHomePage facebookHomePage = Browser.openWebPage("https://www.facebook.com").login(System.getProperty("email"), System.getProperty("password"));
+        FacebookHomePage facebookHomePage = Browser.openFacebook().login(System.getProperty("email"), System.getProperty("password"));
         Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
     }
 }

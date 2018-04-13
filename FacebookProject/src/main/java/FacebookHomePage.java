@@ -1,4 +1,3 @@
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -7,19 +6,12 @@ import org.openqa.selenium.support.FindBy;
  */
 public class FacebookHomePage extends BasePage {
 
-    @FindBy(xpath = "//div[@id = 'userNav']")
+    @FindBy(xpath = "//div[@id = 'userNav1']")
     private WebElement userProfileLink;
 
     public boolean isUserProfileLinkDisplayed() {
-        boolean userProfileLink = false;
+        logger.info("Check data on the Home page");
 
-        try {
-            userProfileLink = this.userProfileLink.isDisplayed();
-            logger.info("Check data on the Home page");
-        } catch (NoSuchElementException ex) {
-            logger.error("Element not found. " + this.userProfileLink);
-        }
-
-        return userProfileLink;
+        return isElementDisplayed(userProfileLink);
     }
 }
