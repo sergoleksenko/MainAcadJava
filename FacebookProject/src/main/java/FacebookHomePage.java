@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class FacebookHomePage extends BasePage {
 
-    @FindBy(xpath = "//div[@id = 'userNav1']")
+    @FindBy(xpath = "//div[@id = 'userNav']")
     private WebElement userProfileLink;
 
     public boolean isUserProfileLinkDisplayed() {
