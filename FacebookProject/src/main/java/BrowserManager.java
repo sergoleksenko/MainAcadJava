@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 /**
  * Created by Serg on 4/2/18.
  */
-public class Browser {
+public class BrowserManager {
 
     public static WebDriver browser;
 

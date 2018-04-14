@@ -15,10 +15,10 @@ public class FacebookStartPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class , 'menu_login_container')]//input[@value = 'Log In']")
     private WebElement logInButton;
 
-    public FacebookHomePage login(String email, String password) {
+    public FacebookHomePage login(User user) {
         logger.info("Try login to Facebook");
-        emailField.sendKeys(email);
-        passwordField.sendKeys(password);
+        emailField.sendKeys(user.getEmail());
+        passwordField.sendKeys(user.getPassword());
         logInButton.click();
 
         return new FacebookHomePage();

@@ -14,18 +14,15 @@ public class BasePage {
 
     public BasePage() {
         PropertyConfigurator.configure("log4j.properties");
-        PageFactory.initElements(Browser.browser, this);
+        PageFactory.initElements(BrowserManager.browser, this);
     }
 
     public boolean isElementDisplayed(WebElement webElement) {
-        boolean elementDisplayed = false;
-
         try {
-            elementDisplayed = webElement.isDisplayed();
+            return webElement.isDisplayed();
         } catch (NoSuchElementException ex) {
             logger.error("Element not found. " + webElement);
+            return false;
         }
-
-        return elementDisplayed;
     }
 }
