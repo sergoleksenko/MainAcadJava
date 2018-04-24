@@ -1,13 +1,11 @@
 package bspb.pages;
 
-import bspb.pages.AccountsStatementsPage;
-import bspb.pages.CurrencyExchangePage;
+import bspb.utils.ActionHelper;
 import bspb.utils.BrowserManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -36,20 +34,16 @@ public class MenuPanel {
     }
 
     public AccountsStatementsPage openAccountsStatementsPage() {
-        Actions actions = new Actions(BrowserManager.browser);
-
         logger.info("Opening Statements page");
-        actions.moveToElement(accountsMenu).build().perform();
+        ActionHelper.moveToElement(accountsMenu);
         statementsMenuItem.click();
 
         return new AccountsStatementsPage();
     }
 
     public CurrencyExchangePage openCurrencyExchangePage() {
-        Actions actions = new Actions(BrowserManager.browser);
-
         logger.info("Opening Currency Exchange  page");
-        actions.moveToElement(currencyMenu).build().perform();
+        ActionHelper.moveToElement(currencyMenu);
         exchangeMenuItem.click();
 
         return new CurrencyExchangePage();

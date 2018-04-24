@@ -36,8 +36,8 @@ public class CurrencyExchangePage extends BasePage {
         ElementHelper elementHelper = new ElementHelper();
         logger.info("Clicking on calculate button");
 
-        elementHelper.selectDataFromComboBox(fromAccountField, "USD");
-        elementHelper.selectDataFromComboBox(toAccountField, "RUB");
+        elementHelper.selectAccountFromComboBox(fromAccountField, "USD");
+        elementHelper.selectAccountFromComboBox(toAccountField, "RUB");
         sellingField.sendKeys(Float.toString(currencyAmount));
         detailsField.sendKeys(detailsMessage);
         calculateButton.click();

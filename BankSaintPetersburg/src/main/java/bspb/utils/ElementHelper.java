@@ -33,12 +33,12 @@ public class ElementHelper {
         return element.getText().contains(message);
     }
 
-    public void selectDataFromComboBox(WebElement accountsField, String currency) {
-        List<WebElement> accounts = accountsField.findElements(By.tagName("option"));
+    public void selectAccountFromComboBox(WebElement accountField, String currency) {
+        List<WebElement> accounts = accountField.findElements(By.tagName("option"));
 
-        for (WebElement element : accounts) {
-            if (element.getAttribute("currency-code").equals(currency)) {
-                element.click();
+        for (WebElement account : accounts) {
+            if (account.getAttribute("currency-code").equals(currency)) {
+                account.click();
                 break;
             }
         }
