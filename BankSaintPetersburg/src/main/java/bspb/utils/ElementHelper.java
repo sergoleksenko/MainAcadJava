@@ -7,8 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
 /**
  * Created by Serg on 4/23/18.
  */
@@ -33,14 +31,13 @@ public class ElementHelper {
         return element.getText().contains(message);
     }
 
-    public void selectAccountFromComboBox(WebElement accountField, String currency) {
-        List<WebElement> accounts = accountField.findElements(By.tagName("option"));
-
-        for (WebElement account : accounts) {
+    public WebElement getAccountFromComboBox(WebElement accountField, String currency) {
+        for (WebElement account : accountField.findElements(By.tagName("option"))) {
             if (account.getAttribute("currency-code").equals(currency)) {
-                account.click();
-                break;
+                return account;
             }
         }
+
+        return null;
     }
 }

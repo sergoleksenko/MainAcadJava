@@ -5,6 +5,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by Serg on 4/18/18.
  */
@@ -38,9 +40,10 @@ public class BankSaintPetersburgTest {
     }
 
     @Test
-    public void test03CurrencyExchange() throws InterruptedException {
+    public void test03CurrencyExchange() {
         CurrencyExchangePage currencyExchangePage = new AccountsStatementsPage().onMenu().openCurrencyExchangePage();
-        String currencyExchangeSuccessMessage = currencyExchangePage.calculate(100, "Details message for exchange").confirm().getCurrencyExchangeSuccessMessage();
+        float sellingAmount = Float.parseFloat(new DecimalFormat("#0.00").format(currencyExchangePage.getAccountBalance("USD") * 0.1));
+        String currencyExchangeSuccessMessage = currencyExchangePage.currencySelling("USD", "RUB", sellingAmount, "Details message for exchange").calculate().confirm().getCurrencyExchangeSuccessMessage();
         Assert.assertEquals(CURRENCY_EXCHANGE_SUCCESS, currencyExchangeSuccessMessage, "Currency exchange was unsuccess.");
     }
 
