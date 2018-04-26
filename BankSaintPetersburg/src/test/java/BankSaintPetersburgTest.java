@@ -42,7 +42,7 @@ public class BankSaintPetersburgTest {
     @Test
     public void test03CurrencyExchange() {
         CurrencyExchangePage currencyExchangePage = new AccountsStatementsPage().onMenu().openCurrencyExchangePage();
-        float sellingAmount = Float.parseFloat(new DecimalFormat("#0.00").format(currencyExchangePage.getAccountBalance("USD") * 0.1));
+        String sellingAmount = new DecimalFormat("#0.00").format(currencyExchangePage.getAccountBalance("USD") * 0.1);
         String currencyExchangeSuccessMessage = currencyExchangePage.currencySelling("USD", "RUB", sellingAmount, "Details message for exchange").calculate().confirm().getCurrencyExchangeSuccessMessage();
         Assert.assertEquals(CURRENCY_EXCHANGE_SUCCESS, currencyExchangeSuccessMessage, "Currency exchange was unsuccess.");
     }

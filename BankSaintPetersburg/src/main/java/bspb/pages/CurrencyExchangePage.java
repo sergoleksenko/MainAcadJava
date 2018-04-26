@@ -35,18 +35,18 @@ public class CurrencyExchangePage extends BasePage {
     public float getAccountBalance(String accountCurrency) {
         logger.info("Getting account balance");
         String accountBalance = new ElementHelper().getAccountFromComboBox(fromAccountField, accountCurrency).getText().split(":")[1].replace(" ", "").replace("\n", "");
-        logger.info(accountBalance);
+        logger.info("Account balance is " + accountBalance);
 
         return Float.parseFloat(accountBalance.substring(0, accountBalance.length() - 1));
     }
 
-    public CurrencyExchangePage currencySelling(String accountCurrencyFrom, String accountCurrencyTo, float currencyAmount, String detailsMessage) {
+    public CurrencyExchangePage currencySelling(String accountCurrencyFrom, String accountCurrencyTo, String currencyAmount, String detailsMessage) {
         ElementHelper elementHelper = new ElementHelper();
 
         logger.info("Choosing accounts and filling fields selling and details");
         elementHelper.getAccountFromComboBox(fromAccountField, accountCurrencyFrom).click();
         elementHelper.getAccountFromComboBox(toAccountField, accountCurrencyTo).click();
-        sellingField.sendKeys(Float.toString(currencyAmount));
+        sellingField.sendKeys(currencyAmount);
         detailsField.sendKeys(detailsMessage);
 
         return new CurrencyExchangePage();
