@@ -29,19 +29,19 @@ public class BankSaintPetersburgTest {
     @Test
     public void test01Login() {
         WelcomePage welcomePage = BrowserManager.openBspb().login().completeLogin();
-        Assert.assertTrue(welcomePage.onHeader().isUserNameDisplayed(), "There is no user name on the page");
-        Assert.assertEquals(USER_NAME, welcomePage.onHeader().getUserName(), "User name on the page don't equal " + USER_NAME + ".");
+        Assert.assertTrue(welcomePage.isUserNameDisplayed(), "There is no user name on the page");
+        Assert.assertEquals(USER_NAME, welcomePage.getUserName(), "User name on the page don't equal " + USER_NAME + ".");
     }
 
     @Test
     public void test02ClosingBalance() {
-        float closingBalance = new WelcomePage().onMenu().openAccountsStatementsPage().getClosingBalance();
+        float closingBalance = new WelcomePage().openAccountsStatementsPage().getClosingBalance();
         Assert.assertTrue(closingBalance > 0, "Closing balance is less or equals 0.");
     }
 
     @Test
     public void test03CurrencyExchange() {
-        CurrencyExchangePage currencyExchangePage = new AccountsStatementsPage().onMenu().openCurrencyExchangePage();
+        CurrencyExchangePage currencyExchangePage = new AccountsStatementsPage().openCurrencyExchangePage();
         String sellingAmount = new DecimalFormat("#0.00").format(currencyExchangePage.getAccountBalance("USD") * 0.1);
         String currencyExchangeSuccessMessage = currencyExchangePage.currencySelling("USD", "RUB", sellingAmount, "Details message for exchange").calculate().confirm().getCurrencyExchangeSuccessMessage();
         Assert.assertEquals(CURRENCY_EXCHANGE_SUCCESS, currencyExchangeSuccessMessage, "Currency exchange was unsuccess.");
@@ -49,7 +49,7 @@ public class BankSaintPetersburgTest {
 
     @Test
     public void test04Messages() {
-        MessagesPage messagesPage = new CurrencyExchangeSuccessPage().onHeader().openMessagesPage().newMessage().sendMessage(MESSAGE);
+        MessagesPage messagesPage = new CurrencyExchangeSuccessPage().openMessagesPage().newMessage().sendMessage(MESSAGE);
         Assert.assertTrue(messagesPage.isMessageSent(MESSAGE), "Message was not sending.");
     }
 }
