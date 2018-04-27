@@ -21,7 +21,7 @@ public class CurrencyExchangePage extends BasePage {
     @FindBy(xpath = "//textarea[@name = 'payment.details']")
     private WebElement detailsField;
 
-    @FindBy(xpath = "//input[@id = 'forward']")
+    @FindBy(xpath = "//button[@id = 'forward']")
     private WebElement calculateButton;
 
     public HeaderPanel onHeader() {
