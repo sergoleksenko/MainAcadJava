@@ -1,10 +1,8 @@
 package bspb.pages;
 
-import bspb.utils.BrowserManager;
+import bspb.utils.WaitHelper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Serg on 4/23/18.
@@ -25,6 +23,6 @@ public class CurrencyExchangeSuccessPage extends BasePage {
     public String getCurrencyExchangeSuccessMessage() {
         logger.info("Getting message after currency exchange");
 
-        return (new WebDriverWait(BrowserManager.browser, 5)).until(ExpectedConditions.visibilityOf(currencyExchangeSuccessMessage)).getText(); //currencyExchangeSuccessMessage.getText();
+        return new WaitHelper().waitForElementVisible(currencyExchangeSuccessMessage).getText();
     }
 }
