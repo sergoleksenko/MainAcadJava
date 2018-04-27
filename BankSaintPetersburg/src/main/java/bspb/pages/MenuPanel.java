@@ -12,9 +12,9 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Serg on 4/23/18.
  */
-public class MenuPanel {
+public abstract class MenuPanel {
 
-    private Logger logger = LogManager.getLogger(this.getClass().getName());
+    protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
     @FindBy(xpath = "//a[@id = 'accounts-index']")
     private WebElement accountsMenu;
