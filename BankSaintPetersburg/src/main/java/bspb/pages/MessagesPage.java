@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Serg on 4/22/18.
  */
-public class MessagesPage extends HeaderPanel {
+public class MessagesPage extends BasePage {
 
     @FindBy(xpath = "//a[@id = 'new-message-btn']")
     private WebElement newMessageButton;
@@ -18,13 +18,13 @@ public class MessagesPage extends HeaderPanel {
     @FindBy(xpath = "//div[@class = 'one-liner']/span")
     private List<WebElement> messages;
 
-//    public HeaderPanel onHeader() {
-//        return new HeaderPanel();
-//    }
-//
-//    public MenuPanel onMenu() {
-//        return new MenuPanel();
-//    }
+    public HeaderPanel onHeader() {
+        return new HeaderPanel();
+    }
+
+    public MenuPanel onMenu() {
+        return new MenuPanel();
+    }
 
     public NewMessagePage newMessage() {
         logger.info("Opening new message page");

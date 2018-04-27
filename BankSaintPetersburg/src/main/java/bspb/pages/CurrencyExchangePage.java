@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Serg on 4/22/18.
  */
-public class CurrencyExchangePage extends HeaderPanel {
+public class CurrencyExchangePage extends BasePage {
 
     @FindBy(xpath = "//select[@id = 'acc1']")
     private WebElement fromAccountField;
@@ -24,13 +24,13 @@ public class CurrencyExchangePage extends HeaderPanel {
     @FindBy(xpath = "//button[@id = 'forward']")
     private WebElement calculateButton;
 
-//    public HeaderPanel onHeader() {
-//        return new HeaderPanel();
-//    }
+    public HeaderPanel onHeader() {
+        return new HeaderPanel();
+    }
 
-//    public MenuPanel onMenu() {
-//        return new MenuPanel();
-//    }
+    public MenuPanel onMenu() {
+        return new MenuPanel();
+    }
 
     public float getAccountBalance(String accountCurrency) {
         logger.info("Getting account balance");
