@@ -11,7 +11,7 @@ public class NewMessagePage extends BasePage {
     @FindBy(xpath = "//textarea[@name = 'message.text']")
     private WebElement contentField;
 
-    @FindBy(xpath = "//input[@id = 'send-button']")
+    @FindBy(xpath = "//button[@id = 'send-button']")
     private WebElement sendButton;
 
     public HeaderPanel onHeader() {
