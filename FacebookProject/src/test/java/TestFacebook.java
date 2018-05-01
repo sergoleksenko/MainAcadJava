@@ -1,7 +1,5 @@
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 /**
  * Created by Serg on 4/2/18.
@@ -14,19 +12,21 @@ public class TestFacebook {
     */
     private User user = new User(System.getProperty("email"), System.getProperty("password"));
 
-    @BeforeClass
+    @BeforeMethod
     public void openBrowser() {
         BrowserManager.open();
     }
 
-    @AfterClass
+    @AfterMethod
     public void closeBrowser() {
         BrowserManager.close();
     }
 
     @Test
-    public void loginTest() {
+    public void loginTest() throws InterruptedException {
         FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
+        Thread.sleep(5000);
         Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
+        System.out.println("loginTest");
     }
 }

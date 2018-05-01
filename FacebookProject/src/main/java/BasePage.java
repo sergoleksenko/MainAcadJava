@@ -14,7 +14,7 @@ public class BasePage {
 
     public BasePage() {
         PropertyConfigurator.configure("log4j.properties");
-        PageFactory.initElements(BrowserManager.browser, this);
+        PageFactory.initElements(BrowserManager.getBrowser(), this);
     }
 
     public boolean isElementDisplayed(WebElement webElement) {
