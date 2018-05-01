@@ -11,14 +11,6 @@ public class AccountsStatementsPage extends HeaderPanel {
     @FindBy(xpath = "//tr[@id = 'closing-balance-row']/th[@class = 'right amount']")
     private WebElement closingBalance;
 
-//    public HeaderPanel onHeader() {
-//        return new HeaderPanel();
-//    }
-//
-//    public MenuPanel onMenu() {
-//        return new MenuPanel();
-//    }
-
     public float getClosingBalance() {
         logger.info("Getting closing balance");
 

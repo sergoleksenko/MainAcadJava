@@ -12,14 +12,6 @@ public class CurrencyExchangeSuccessPage extends HeaderPanel {
     @FindBy(xpath = "//div[contains(@class, 'alert-success')]")
     private WebElement currencyExchangeSuccessMessage;
 
-//    public HeaderPanel onHeader() {
-//        return new HeaderPanel();
-//    }
-//
-//    public MenuPanel onMenu() {
-//        return new MenuPanel();
-//    }
-
     public String getCurrencyExchangeSuccessMessage() {
         logger.info("Getting message after currency exchange");
 

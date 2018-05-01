@@ -18,14 +18,6 @@ public class MessagesPage extends HeaderPanel {
     @FindBy(xpath = "//div[@class = 'one-liner']/span")
     private List<WebElement> messages;
 
-//    public HeaderPanel onHeader() {
-//        return new HeaderPanel();
-//    }
-//
-//    public MenuPanel onMenu() {
-//        return new MenuPanel();
-//    }
-
     public NewMessagePage newMessage() {
         logger.info("Opening new message page");
         newMessageButton.click();

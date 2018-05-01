@@ -16,14 +16,6 @@ public class CurrencyExchangePreviewPage extends HeaderPanel {
     @FindBy(xpath = "//iframe[@id = 'confirmation-frame']")
     private WebElement confirmationFrame;
 
-//    public HeaderPanel onHeader() {
-//        return new HeaderPanel();
-//    }
-//
-//    public MenuPanel onMenu() {
-//        return new MenuPanel();
-//    }
-
     public CurrencyExchangeSuccessPage confirm() {
         WaitHelper waitHelper = new WaitHelper();
 
@@ -31,7 +23,7 @@ public class CurrencyExchangePreviewPage extends HeaderPanel {
         waitHelper.waitAndSwitchToFrame(confirmationFrame);
         waitHelper.waitForElementVisible(confirmButton).click();
 
-        BrowserManager.browser.switchTo().defaultContent();
+        BrowserManager.getBrowser().switchTo().defaultContent();
 
         return new CurrencyExchangeSuccessPage();
     }

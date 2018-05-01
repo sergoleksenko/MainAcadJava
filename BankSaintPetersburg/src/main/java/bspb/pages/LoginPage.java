@@ -23,7 +23,7 @@ public class LoginPage {
 
     public LoginPage() {
         PropertyConfigurator.configure("log4j.properties");
-        PageFactory.initElements(BrowserManager.browser, this);
+        PageFactory.initElements(BrowserManager.getBrowser(), this);
     }
 
     public LoginPage login() {

@@ -9,6 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 public class ActionHelper {
 
     public static void moveToElement(WebElement element) {
-        new Actions(BrowserManager.browser).moveToElement(element).build().perform();
+        new Actions(BrowserManager.getBrowser()).moveToElement(element).build().perform();
     }
 }

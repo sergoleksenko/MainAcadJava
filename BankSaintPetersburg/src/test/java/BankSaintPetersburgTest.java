@@ -1,8 +1,10 @@
-import bspb.pages.*;
+import bspb.pages.CurrencyExchangePage;
+import bspb.pages.MessagesPage;
+import bspb.pages.WelcomePage;
 import bspb.utils.BrowserManager;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.text.DecimalFormat;
@@ -14,14 +16,14 @@ public class BankSaintPetersburgTest {
 
     private static final String USER_NAME = "Королёва Ольга";
     private static final String CURRENCY_EXCHANGE_SUCCESS = "Payment transferred successfully";
-    private static final String MESSAGE = "Test message in the SaintPetersburg bank application " + java.time.LocalTime.now();
+    private static final String MESSAGE = "Test message in the SaintPetersburg bank application - " + java.time.LocalTime.now();
 
-    @BeforeClass
+    @BeforeMethod
     public void openBrowser() {
         BrowserManager.open();
     }
 
-    @AfterClass
+    @AfterMethod
     public void closeBrowser() {
         BrowserManager.close();
     }
@@ -35,13 +37,13 @@ public class BankSaintPetersburgTest {
 
     @Test
     public void test02ClosingBalance() {
-        float closingBalance = new WelcomePage().openAccountsStatementsPage().getClosingBalance();
+        float closingBalance = BrowserManager.openBspb().login().completeLogin().openAccountsStatementsPage().getClosingBalance();
         Assert.assertTrue(closingBalance > 0, "Closing balance is less or equals 0.");
     }
 
     @Test
     public void test03CurrencyExchange() {
-        CurrencyExchangePage currencyExchangePage = new AccountsStatementsPage().openCurrencyExchangePage();
+        CurrencyExchangePage currencyExchangePage = BrowserManager.openBspb().login().completeLogin().openCurrencyExchangePage();
         String sellingAmount = new DecimalFormat("#0.00").format(currencyExchangePage.getAccountBalance("USD") * 0.1);
         String currencyExchangeSuccessMessage = currencyExchangePage.currencySelling("USD", "RUB", sellingAmount, "Details message for exchange").calculate().confirm().getCurrencyExchangeSuccessMessage();
         Assert.assertEquals(CURRENCY_EXCHANGE_SUCCESS, currencyExchangeSuccessMessage, "Currency exchange was unsuccess.");
@@ -49,7 +51,7 @@ public class BankSaintPetersburgTest {
 
     @Test
     public void test04Messages() {
-        MessagesPage messagesPage = new CurrencyExchangeSuccessPage().openMessagesPage().newMessage().sendMessage(MESSAGE);
+        MessagesPage messagesPage = BrowserManager.openBspb().login().completeLogin().openMessagesPage().newMessage().sendMessage(MESSAGE);
         Assert.assertTrue(messagesPage.isMessageSent(MESSAGE), "Message was not sending.");
     }
 }

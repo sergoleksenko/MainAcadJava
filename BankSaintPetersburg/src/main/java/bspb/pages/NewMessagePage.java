@@ -14,14 +14,6 @@ public class NewMessagePage extends HeaderPanel {
     @FindBy(xpath = "//button[@id = 'send-button']")
     private WebElement sendButton;
 
-//    public HeaderPanel onHeader() {
-//        return new HeaderPanel();
-//    }
-//
-//    public MenuPanel onMenu() {
-//        return new MenuPanel();
-//    }
-
     public MessagesPage sendMessage(String message) {
         logger.info("Sending new message");
         contentField.sendKeys(message);

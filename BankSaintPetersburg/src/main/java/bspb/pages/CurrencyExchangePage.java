@@ -24,14 +24,6 @@ public class CurrencyExchangePage extends HeaderPanel {
     @FindBy(xpath = "//button[@id = 'forward']")
     private WebElement calculateButton;
 
-//    public HeaderPanel onHeader() {
-//        return new HeaderPanel();
-//    }
-//
-//    public MenuPanel onMenu() {
-//        return new MenuPanel();
-//    }
-
     public float getAccountBalance(String accountCurrency) {
         logger.info("Getting account balance");
         String accountBalance = new ElementHelper().getAccountFromComboBox(fromAccountField, accountCurrency).getText().split(":")[1].replace(" ", "").replace("\n", "");

@@ -14,35 +14,39 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class BrowserManager {
 
-    public static WebDriver browser;
-    private static Logger logger = LogManager.getLogger(BrowserManager.class);
     private static final String URL = "http://idemo.bspb.ru/";
+    private static ThreadLocal<WebDriver> browser = new ThreadLocal<>();
+    private static Logger logger = LogManager.getLogger(BrowserManager.class);
+
+    public static WebDriver getBrowser() {
+        return browser.get();
+    }
 
     public static void open() {
         PropertyConfigurator.configure("log4j.properties");
         logger.info("Opening Chrome browser window");
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver");
 
-        browser = new ChromeDriver();
+        browser.set(new ChromeDriver());
         maximize();
     }
 
     public static void close() {
-        if (browser != null) {
+        if (getBrowser() != null) {
             logger.info("Closing browser window");
-            browser.quit();
+            getBrowser().quit();
         }
     }
 
     private static void maximize() {
         logger.info("Maximizing browser window");
-        browser.manage().window().setPosition(new Point(0, 0));
-        browser.manage().window().setSize(new Dimension(1920, 1080));
+        getBrowser().manage().window().setPosition(new Point(0, 0));
+        getBrowser().manage().window().setSize(new Dimension(1920, 1080));
     }
 
     public static LoginPage openBspb() {
         logger.info("Go to url " + URL);
-        browser.get(URL);
+        getBrowser().get(URL);
 
         return new LoginPage();
     }

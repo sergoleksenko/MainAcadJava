@@ -16,13 +16,13 @@ public abstract class MenuPanel {
 
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
-    @FindBy(xpath = "//a[@id = 'accounts-index']")
+    @FindBy(xpath = "//div[@class = 'navbar-inner']//li[@id = 'accounts']")
     private WebElement accountsMenu;
 
     @FindBy(xpath = "//a[@id = 'statements-statement']")
     private WebElement statementsMenuItem;
 
-    @FindBy(xpath = "//a[@id = 'currency-rates']")
+    @FindBy(xpath = "//div[@class = 'navbar-inner']//li[@id = 'currency']")
     private WebElement currencyMenu;
 
     @FindBy(xpath = "//a[@id = 'currency-exchange']")
@@ -30,7 +30,7 @@ public abstract class MenuPanel {
 
     public MenuPanel() {
         PropertyConfigurator.configure("log4j.properties");
-        PageFactory.initElements(BrowserManager.browser, this);
+        PageFactory.initElements(BrowserManager.getBrowser(), this);
     }
 
     public AccountsStatementsPage openAccountsStatementsPage() {
@@ -42,7 +42,7 @@ public abstract class MenuPanel {
     }
 
     public CurrencyExchangePage openCurrencyExchangePage() {
-        logger.info("Opening Currency Exchange  page");
+        logger.info("Opening Currency Exchange page");
         ActionHelper.moveToElement(currencyMenu);
         exchangeMenuItem.click();
 
