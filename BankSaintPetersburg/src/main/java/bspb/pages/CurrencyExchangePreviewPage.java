@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Serg on 4/22/18.
  */
-public class CurrencyExchangePreviewPage extends BasePage {
+public class CurrencyExchangePreviewPage extends HeaderPanel {
 
     @FindBy(xpath = "//button[@id = 'confirm']")
     private WebElement confirmButton;
@@ -16,13 +16,13 @@ public class CurrencyExchangePreviewPage extends BasePage {
     @FindBy(xpath = "//iframe[@id = 'confirmation-frame']")
     private WebElement confirmationFrame;
 
-    public HeaderPanel onHeader() {
-        return new HeaderPanel();
-    }
-
-    public MenuPanel onMenu() {
-        return new MenuPanel();
-    }
+//    public HeaderPanel onHeader() {
+//        return new HeaderPanel();
+//    }
+//
+//    public MenuPanel onMenu() {
+//        return new MenuPanel();
+//    }
 
     public CurrencyExchangeSuccessPage confirm() {
         WaitHelper waitHelper = new WaitHelper();

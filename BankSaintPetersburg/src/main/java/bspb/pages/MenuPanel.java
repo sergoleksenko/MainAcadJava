@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Serg on 4/23/18.
  */
-public class MenuPanel {
+public abstract class MenuPanel {
 
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 

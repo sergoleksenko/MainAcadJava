@@ -22,7 +22,7 @@ public class WaitHelper {
     }
 
     public List<WebElement> waitForAllElementsVisible(List<WebElement> elements) {
-        logger.info("Waiting when all messages will be visible");
+        logger.info("Waiting when all elements will be visible");
         try {
             return new WebDriverWait(BrowserManager.browser, 5).until(ExpectedConditions.visibilityOfAllElements(elements));
         } catch (TimeoutException ex) {
