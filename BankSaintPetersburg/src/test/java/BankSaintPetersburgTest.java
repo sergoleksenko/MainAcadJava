@@ -14,7 +14,7 @@ public class BankSaintPetersburgTest {
 
     private static final String USER_NAME = "Королёва Ольга";
     private static final String CURRENCY_EXCHANGE_SUCCESS = "Payment transferred successfully";
-    private static final String MESSAGE = "Test message in the SaintPetersburg bank application" + java.time.LocalTime.now();
+    private static final String MESSAGE = "Test message in the SaintPetersburg bank application " + java.time.LocalTime.now();
 
     @BeforeClass
     public void openBrowser() {

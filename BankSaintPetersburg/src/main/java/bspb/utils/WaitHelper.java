@@ -32,11 +32,21 @@ public class WaitHelper {
     }
 
     public WebElement waitForElementVisible(WebElement element) {
-        return (new WebDriverWait(BrowserManager.browser, 5)).until(ExpectedConditions.visibilityOf(element));
+        logger.info("Waiting when element will be visible");
+        try {
+            return (new WebDriverWait(BrowserManager.browser, 5)).until(ExpectedConditions.visibilityOf(element));
+        } catch (TimeoutException ex) {
+            logger.error("Element not found.");
+            return null;
+        }
     }
 
-    public void switchToFrame(WebElement frame) {
+    public void waitAndSwitchToFrame(WebElement frame) {
         logger.info("Waiting for a frame");
-        (new WebDriverWait(BrowserManager.browser, 5)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
+        try {
+            (new WebDriverWait(BrowserManager.browser, 5)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
+        } catch (TimeoutException ex) {
+            logger.error("Frame not found.");
+        }
     }
 }
