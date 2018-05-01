@@ -36,7 +36,7 @@ public class WaitHelper {
         return (new WebDriverWait(BrowserManager.browser, 5)).until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void switchToFrame(WebElement frame) {
+    public void waitAndSwitchToFrame(WebElement frame) {
         logger.info("Waiting for a frame");
         (new WebDriverWait(BrowserManager.browser, 5)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
     }

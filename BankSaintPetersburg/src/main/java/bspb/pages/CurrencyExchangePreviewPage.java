@@ -28,7 +28,7 @@ public class CurrencyExchangePreviewPage extends HeaderPanel {
         WaitHelper waitHelper = new WaitHelper();
 
         logger.info("Confirming currency exchange");
-        waitHelper.switchToFrame(confirmationFrame);
+        waitHelper.waitAndSwitchToFrame(confirmationFrame);
         waitHelper.waitForElementVisible(confirmButton).click();
 
         BrowserManager.browser.switchTo().defaultContent();
