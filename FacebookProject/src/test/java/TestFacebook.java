@@ -1,5 +1,7 @@
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  * Created by Serg on 4/2/18.
@@ -23,9 +25,29 @@ public class TestFacebook {
     }
 
     @Test
-    public void loginTest() throws InterruptedException {
+    public void test01Login() {
         FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
-        Thread.sleep(5000);
+        Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
+        System.out.println("loginTest");
+    }
+
+    @Test
+    public void test02Login() {
+        FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
+        Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
+        System.out.println("loginTest");
+    }
+
+    @Test
+    public void test03Login() {
+        FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
+        Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
+        System.out.println("loginTest");
+    }
+
+    @Test
+    public void test04Login() {
+        FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
         Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
         System.out.println("loginTest");
     }
