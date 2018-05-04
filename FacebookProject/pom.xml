@@ -25,7 +25,7 @@
                 <version>2.10</version>
                 <configuration>
                     <parallel>methods</parallel>
-                    <threadCount>4</threadCount>
+                    <threadCount>2</threadCount>
                 </configuration>
             </plugin>
         </plugins>
