@@ -12,13 +12,13 @@ import org.openqa.selenium.WebElement;
  */
 public class ElementHelper {
 
-    private Logger logger = LogManager.getLogger(this.getClass().getName());
+    private static Logger logger = LogManager.getLogger(ElementHelper.class);
 
     public ElementHelper() {
         PropertyConfigurator.configure("log4j.properties");
     }
 
-    public boolean isElementDisplayed(WebElement element) {
+    public static boolean isElementDisplayed(WebElement element) {
         try {
             return element.isDisplayed();
         } catch (NoSuchElementException ex) {
@@ -27,11 +27,11 @@ public class ElementHelper {
         }
     }
 
-    public boolean isElementContainsText(WebElement element, String message) {
+    public static boolean isElementContainsText(WebElement element, String message) {
         return element.getText().contains(message);
     }
 
-    public WebElement getAccountFromComboBox(WebElement accountField, String currency) {
+    public static WebElement getAccountFromComboBox(WebElement accountField, String currency) {
         for (WebElement account : accountField.findElements(By.tagName("option"))) {
             if (account.getAttribute("currency-code").equals(currency)) {
                 return account;

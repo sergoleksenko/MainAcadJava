@@ -1,5 +1,6 @@
 package bspb.utils;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -10,5 +11,9 @@ public class ActionHelper {
 
     public static void moveToElement(WebElement element) {
         new Actions(BrowserManager.getBrowser()).moveToElement(element).build().perform();
+    }
+
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) BrowserManager.getBrowser()).executeScript("arguments[0].click();", element);
     }
 }

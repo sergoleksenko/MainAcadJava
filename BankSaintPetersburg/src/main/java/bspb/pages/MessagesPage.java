@@ -26,11 +26,9 @@ public class MessagesPage extends HeaderPanel {
     }
 
     public boolean isMessageSent(String message) {
-        ElementHelper elementHelper = new ElementHelper();
-
         logger.info("Checking whether message was sending");
-        for (WebElement element : new WaitHelper().waitForAllElementsVisible(messages)) {
-            if (elementHelper.isElementContainsText(element, message)) {
+        for (WebElement element : WaitHelper.waitForAllElementsVisible(messages)) {
+            if (ElementHelper.isElementContainsText(element, message)) {
                 return true;
             }
         }

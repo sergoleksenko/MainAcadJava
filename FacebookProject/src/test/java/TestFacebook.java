@@ -24,31 +24,33 @@ public class TestFacebook {
         BrowserManager.close();
     }
 
-    @Test
-    public void test01Login() {
+    private void login() {
         FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
         Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
-        System.out.println("loginTest");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test01Login() {
+        login();
     }
 
     @Test
     public void test02Login() {
-        FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
-        Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
-        System.out.println("loginTest");
+        login();
     }
 
     @Test
     public void test03Login() {
-        FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
-        Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
-        System.out.println("loginTest");
+        login();
     }
 
     @Test
     public void test04Login() {
-        FacebookHomePage facebookHomePage = BrowserManager.openFacebook().login(user);
-        Assert.assertTrue(facebookHomePage.isUserProfileLinkDisplayed(), "Couldn't found element on the page,");
-        System.out.println("loginTest");
+        login();
     }
 }

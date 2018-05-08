@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class WaitHelper {
 
-    private Logger logger = LogManager.getLogger(this.getClass().getName());
+    private static Logger logger = LogManager.getLogger(WaitHelper.class);
 
     public WaitHelper() {
         PropertyConfigurator.configure("log4j.properties");
     }
 
-    public List<WebElement> waitForAllElementsVisible(List<WebElement> elements) {
+    public static List<WebElement> waitForAllElementsVisible(List<WebElement> elements) {
         logger.info("Waiting when all elements will be visible");
         try {
             return new WebDriverWait(BrowserManager.getBrowser(), 5).until(ExpectedConditions.visibilityOfAllElements(elements));
@@ -31,7 +31,7 @@ public class WaitHelper {
         }
     }
 
-    public WebElement waitForElementVisible(WebElement element) {
+    public static WebElement waitForElementVisible(WebElement element) {
         logger.info("Waiting when element will be visible");
         try {
             return (new WebDriverWait(BrowserManager.getBrowser(), 5)).until(ExpectedConditions.visibilityOf(element));
@@ -41,7 +41,7 @@ public class WaitHelper {
         }
     }
 
-    public void waitAndSwitchToFrame(WebElement frame) {
+    public static void waitAndSwitchToFrame(WebElement frame) {
         logger.info("Waiting for a frame");
         try {
             (new WebDriverWait(BrowserManager.getBrowser(), 5)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));

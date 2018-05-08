@@ -8,6 +8,10 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Serg on 4/18/18.
@@ -24,11 +28,32 @@ public class BrowserManager {
 
     public static void open() {
         PropertyConfigurator.configure("log4j.properties");
-        logger.info("Opening Chrome browser window");
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver");
+        String browserType = System.getProperty("browser");
 
-        browser.set(new ChromeDriver());
-        maximize();
+        if (browserType == null) {
+            browserType = "chrome";
+        }
+
+        logger.info("Opening " + browserType + "browser window");
+
+        switch (browserType) {
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver");
+                browser.set(new ChromeDriver());
+                break;
+            case "firefox":
+                System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/drivers/geckodriver");
+                browser.set(new FirefoxDriver());
+                break;
+            case "safari":
+                browser.set(new SafariDriver());
+                break;
+            default:
+                logger.error("Oops! Looks like something went wrong");
+        }
+
+        getBrowser().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        maximize(browserType);
     }
 
     public static void close() {
@@ -38,10 +63,15 @@ public class BrowserManager {
         }
     }
 
-    private static void maximize() {
+    private static void maximize(String browserType) {
         logger.info("Maximizing browser window");
-        getBrowser().manage().window().setPosition(new Point(0, 0));
-        getBrowser().manage().window().setSize(new Dimension(1920, 1080));
+
+        if (browserType.equals("chrome")) {
+            getBrowser().manage().window().setPosition(new Point(0, 0));
+            getBrowser().manage().window().setSize(new Dimension(1920, 1080));
+        } else {
+            getBrowser().manage().window().maximize();
+        }
     }
 
     public static LoginPage openBspb() {

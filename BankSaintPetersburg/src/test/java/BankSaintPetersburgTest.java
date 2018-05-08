@@ -2,12 +2,15 @@ import bspb.pages.CurrencyExchangePage;
 import bspb.pages.MessagesPage;
 import bspb.pages.WelcomePage;
 import bspb.utils.BrowserManager;
+import bspb.utils.CSVReader;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.text.DecimalFormat;
+import java.util.Iterator;
 
 /**
  * Created by Serg on 4/18/18.
@@ -16,7 +19,11 @@ public class BankSaintPetersburgTest {
 
     private static final String USER_NAME = "Королёва Ольга";
     private static final String CURRENCY_EXCHANGE_SUCCESS = "Payment transferred successfully";
-    private static final String MESSAGE = "Test message in the SaintPetersburg bank application - " + java.time.LocalTime.now();
+
+    @DataProvider(name = "messageData")
+    public Iterator<Object[]> messageDataFromCsv() {
+        return CSVReader.readMessagesFromCsv();
+    }
 
     @BeforeMethod
     public void openBrowser() {
@@ -49,9 +56,9 @@ public class BankSaintPetersburgTest {
         Assert.assertEquals(CURRENCY_EXCHANGE_SUCCESS, currencyExchangeSuccessMessage, "Currency exchange was unsuccess.");
     }
 
-    @Test
-    public void test04Messages() {
-        MessagesPage messagesPage = BrowserManager.openBspb().login().completeLogin().openMessagesPage().newMessage().sendMessage(MESSAGE);
-        Assert.assertTrue(messagesPage.isMessageSent(MESSAGE), "Message was not sending.");
+    @Test(dataProvider = "messageData")
+    public void test04Messages(String message) {
+        MessagesPage messagesPage = BrowserManager.openBspb().login().completeLogin().openMessagesPage().newMessage().sendMessage(message);
+        Assert.assertTrue(messagesPage.isMessageSent(message), "Message was not sending.");
     }
 }

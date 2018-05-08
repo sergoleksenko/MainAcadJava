@@ -15,6 +15,6 @@ public class CurrencyExchangeSuccessPage extends HeaderPanel {
     public String getCurrencyExchangeSuccessMessage() {
         logger.info("Getting message after currency exchange");
 
-        return new WaitHelper().waitForElementVisible(currencyExchangeSuccessMessage).getText();
+        return WaitHelper.waitForElementVisible(currencyExchangeSuccessMessage).getText();
     }
 }

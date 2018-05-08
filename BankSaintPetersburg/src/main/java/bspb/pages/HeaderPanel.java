@@ -1,5 +1,6 @@
 package bspb.pages;
 
+import bspb.utils.ActionHelper;
 import bspb.utils.ElementHelper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,7 +19,7 @@ public abstract class HeaderPanel extends MenuPanel {
     public boolean isUserNameDisplayed() {
         logger.info("Checking whether user name displayed");
 
-        return new ElementHelper().isElementDisplayed(userName);
+        return ElementHelper.isElementDisplayed(userName);
     }
 
     public String getUserName() {
@@ -29,7 +30,7 @@ public abstract class HeaderPanel extends MenuPanel {
 
     public MessagesPage openMessagesPage() {
         logger.info("Opening Messages page");
-        messagesButton.click();
+        ActionHelper.clickWithJS(messagesButton);
 
         return new MessagesPage();
     }
