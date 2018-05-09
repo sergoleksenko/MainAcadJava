@@ -16,4 +16,8 @@ public class ActionHelper {
     public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) BrowserManager.getBrowser()).executeScript("arguments[0].click();", element);
     }
+
+    public static void scrollWithJS(WebElement element) {
+        ((JavascriptExecutor) BrowserManager.getBrowser()).executeScript("arguments[0].scrollIntoView();", element);
+    }
 }

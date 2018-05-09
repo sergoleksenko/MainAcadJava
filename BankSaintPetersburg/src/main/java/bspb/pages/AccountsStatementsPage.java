@@ -1,5 +1,6 @@
 package bspb.pages;
 
+import bspb.utils.ActionHelper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -13,7 +14,7 @@ public class AccountsStatementsPage extends HeaderPanel {
 
     public float getClosingBalance() {
         logger.info("Getting closing balance");
-
+        ActionHelper.scrollWithJS(closingBalance);
         return Float.parseFloat(closingBalance.getText().replace(" ", ""));
     }
 }

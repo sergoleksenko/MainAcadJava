@@ -38,20 +38,20 @@ public class BankSaintPetersburgTest {
         BrowserManager.close();
     }
 
-    @Test
+    @Test(description = "login test")
     public void test01Login() {
         WelcomePage welcomePage = BrowserManager.openBspb().login().completeLogin();
         Assert.assertTrue(welcomePage.isUserNameDisplayed(), "There is no user name on the page");
         Assert.assertEquals(USER_NAME, welcomePage.getUserName(), "User name on the page don't equal " + USER_NAME + ".");
     }
 
-    @Test
+    @Test(description = "closing balance test")
     public void test02ClosingBalance() {
         float closingBalance = BrowserManager.openBspb().login().completeLogin().openAccountsStatementsPage().getClosingBalance();
         Assert.assertTrue(closingBalance > 0, "Closing balance is less or equals 0.");
     }
 
-    @Test
+    @Test(description = "currency exchange test")
     public void test03CurrencyExchange() {
         CurrencyExchangePage currencyExchangePage = BrowserManager.openBspb().login().completeLogin().openCurrencyExchangePage();
         String sellingAmount = new DecimalFormat("#0.00").format(currencyExchangePage.getAccountBalance("USD") * 0.1);
@@ -59,7 +59,7 @@ public class BankSaintPetersburgTest {
         Assert.assertEquals(CURRENCY_EXCHANGE_SUCCESS, currencyExchangeSuccessMessage, "Currency exchange was unsuccess.");
     }
 
-    @Test(dataProvider = "messageData")
+    @Test(dataProvider = "messageData", description = "messages test")
     public void test04Messages(String message) {
         MessagesPage messagesPage = BrowserManager.openBspb().login().completeLogin().openMessagesPage().newMessage().sendMessage(message);
         Assert.assertTrue(messagesPage.isMessageSent(message), "Message was not sending.");
