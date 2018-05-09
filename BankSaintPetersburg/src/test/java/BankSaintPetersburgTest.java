@@ -3,7 +3,9 @@ import bspb.pages.MessagesPage;
 import bspb.pages.WelcomePage;
 import bspb.utils.BrowserManager;
 import bspb.utils.CSVReader;
+import bspb.utils.ScreenshotUtils;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -31,7 +33,8 @@ public class BankSaintPetersburgTest {
     }
 
     @AfterMethod
-    public void closeBrowser() {
+    public void closeBrowser(ITestResult testResult) {
+        ScreenshotUtils.takeScreenshotIfFailure(testResult);
         BrowserManager.close();
     }
 
