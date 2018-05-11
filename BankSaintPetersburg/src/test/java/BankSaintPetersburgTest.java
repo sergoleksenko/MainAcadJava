@@ -5,7 +5,6 @@ import bspb.utils.BrowserManager;
 import bspb.utils.CSVReader;
 import bspb.utils.TestListener;
 import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.text.DecimalFormat;
@@ -32,7 +31,7 @@ public class BankSaintPetersburgTest {
     }
 
     @AfterMethod
-    public void closeBrowser(ITestResult testResult) {
+    public void closeBrowser() {
         BrowserManager.close();
     }
 
