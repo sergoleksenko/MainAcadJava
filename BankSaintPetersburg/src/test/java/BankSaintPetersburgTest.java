@@ -3,13 +3,10 @@ import bspb.pages.MessagesPage;
 import bspb.pages.WelcomePage;
 import bspb.utils.BrowserManager;
 import bspb.utils.CSVReader;
-import bspb.utils.ScreenshotUtils;
+import bspb.utils.TestListener;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.text.DecimalFormat;
 import java.util.Iterator;
@@ -17,6 +14,8 @@ import java.util.Iterator;
 /**
  * Created by Serg on 4/18/18.
  */
+
+@Listeners(TestListener.class)
 public class BankSaintPetersburgTest {
 
     private static final String USER_NAME = "Королёва Ольга";
@@ -34,7 +33,6 @@ public class BankSaintPetersburgTest {
 
     @AfterMethod
     public void closeBrowser(ITestResult testResult) {
-        ScreenshotUtils.takeScreenshotIfFailure(testResult);
         BrowserManager.close();
     }
 
