@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by Serg on 5/8/18.
  */
-public class CSVReader {
+public class CsvReader {
 
-    private static Logger logger = LogManager.getLogger(CSVReader.class);
+    private static Logger logger = LogManager.getLogger(CsvReader.class);
 
     public static Iterator<Object[]> readMessagesFromCsv() {
         PropertyConfigurator.configure("log4j.properties");

@@ -2,7 +2,7 @@ import bspb.pages.CurrencyExchangePage;
 import bspb.pages.MessagesPage;
 import bspb.pages.WelcomePage;
 import bspb.utils.BrowserManager;
-import bspb.utils.CSVReader;
+import bspb.utils.CsvReader;
 import bspb.utils.TestListener;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -22,7 +22,7 @@ public class BankSaintPetersburgTest {
 
     @DataProvider(name = "messageData")
     public Iterator<Object[]> messageDataFromCsv() {
-        return CSVReader.readMessagesFromCsv();
+        return CsvReader.readMessagesFromCsv();
     }
 
     @BeforeMethod
