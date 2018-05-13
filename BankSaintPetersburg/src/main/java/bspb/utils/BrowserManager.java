@@ -28,7 +28,7 @@ public class BrowserManager {
 
     public static void open() {
         PropertyConfigurator.configure("log4j.properties");
-        String browserType = System.getProperty("browser");
+        String browserType = System.getProperty("browser").toLowerCase();
 
         if (browserType == null) {
             browserType = "chrome";
