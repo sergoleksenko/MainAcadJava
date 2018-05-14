@@ -58,6 +58,7 @@ public class BankSaintPetersburgTest {
 
     @Test(dataProvider = "messageData", description = "messages test")
     public void test04Messages(String message) {
+        message = message + " - " + java.time.LocalTime.now();
         MessagesPage messagesPage = BrowserManager.openBspb().login().completeLogin().openMessagesPage().newMessage().sendMessage(message);
         Assert.assertTrue(messagesPage.isMessageSent(message), "Message was not sending.");
     }

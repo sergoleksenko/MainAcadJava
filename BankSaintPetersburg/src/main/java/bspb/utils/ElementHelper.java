@@ -27,10 +27,6 @@ public class ElementHelper {
         }
     }
 
-    public static boolean isElementContainsText(WebElement element, String message) {
-        return element.getText().contains(message);
-    }
-
     public static WebElement getAccountFromComboBox(WebElement accountField, String currency) {
         for (WebElement account : accountField.findElements(By.tagName("option"))) {
             if (account.getAttribute("currency-code").equals(currency)) {
