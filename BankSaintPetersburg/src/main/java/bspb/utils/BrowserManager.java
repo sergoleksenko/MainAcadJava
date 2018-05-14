@@ -32,6 +32,8 @@ public class BrowserManager {
 
         if (browserType == null) {
             browserType = "chrome";
+        } else {
+            browserType = browserType.toLowerCase();
         }
 
         logger.info("Opening " + browserType + "browser window");
