@@ -28,12 +28,6 @@ public class ElementHelper {
     }
 
     public static WebElement getAccountFromComboBox(WebElement accountField, String currency) {
-        for (WebElement account : accountField.findElements(By.tagName("option"))) {
-            if (account.getAttribute("currency-code").equals(currency)) {
-                return account;
-            }
-        }
-
-        return null;
+        return accountField.findElements(By.tagName("option")).stream().filter(op -> op.getAttribute("currency-code").equals(currency)).findFirst().get();
     }
 }
