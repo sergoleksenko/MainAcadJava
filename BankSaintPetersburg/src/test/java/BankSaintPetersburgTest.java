@@ -7,14 +7,12 @@ import bspb.utils.TestListener;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.util.Iterator;
 
 /**
  * Created by Serg on 4/18/18.
  */
-
 @Listeners(TestListener.class)
 public class BankSaintPetersburgTest {
 
@@ -52,8 +50,7 @@ public class BankSaintPetersburgTest {
     @Test(description = "currency exchange test")
     public void test03CurrencyExchange() {
         CurrencyExchangePage currencyExchangePage = BrowserManager.openBspb().login().completeLogin().openCurrencyExchangePage();
-        String sellingAmount = new DecimalFormat("#0.00").format(currencyExchangePage.getAccountBalance("USD") * 0.1);
-        String currencyExchangeSuccessMessage = currencyExchangePage.currencySelling("USD", "RUB", sellingAmount, "Details message for exchange").calculate().confirm().getCurrencyExchangeSuccessMessage();
+        String currencyExchangeSuccessMessage = currencyExchangePage.fillFormForCurrencySelling("USD", "RUB", 0.1, "Details message for exchange").clickCalculateButton().confirm().getCurrencyExchangeSuccessMessage();
         Assert.assertEquals(currencyExchangeSuccessMessage, CURRENCY_EXCHANGE_SUCCESS, "Currency exchange was unsuccess.");
     }
 

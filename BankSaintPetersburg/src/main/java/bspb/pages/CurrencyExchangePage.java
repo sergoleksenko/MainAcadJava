@@ -4,6 +4,8 @@ import bspb.utils.ElementHelper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by Serg on 4/22/18.
  */
@@ -31,17 +33,21 @@ public class CurrencyExchangePage extends HeaderPanel {
         return Float.parseFloat(accountBalance.substring(0, accountBalance.length() - 1));
     }
 
-    public CurrencyExchangePage currencySelling(String accountCurrencyFrom, String accountCurrencyTo, String currencyAmount, String detailsMessage) {
+    public CurrencyExchangePage fillFormForCurrencySelling(String accountCurrencyFrom, String accountCurrencyTo, double percentFromCurrencyAmountForSelling, String detailsMessage) {
         logger.info("Choosing accounts and filling fields selling and details");
         ElementHelper.getAccountFromComboBox(fromAccountField, accountCurrencyFrom).click();
         ElementHelper.getAccountFromComboBox(toAccountField, accountCurrencyTo).click();
-        sellingField.sendKeys(currencyAmount);
+        sellingField.sendKeys(getPercentFromCurrencyAmountForSelling(accountCurrencyFrom, percentFromCurrencyAmountForSelling));
         detailsField.sendKeys(detailsMessage);
         return new CurrencyExchangePage();
     }
 
-    public CurrencyExchangePreviewPage calculate() {
-        logger.info("Clicking on calculate button");
+    private String getPercentFromCurrencyAmountForSelling(String account, double amount) {
+        return new DecimalFormat("#0.00").format(getAccountBalance(account) * amount);
+    }
+
+    public CurrencyExchangePreviewPage clickCalculateButton() {
+        logger.info("Clicking on clickCalculateButton button");
         calculateButton.click();
         return new CurrencyExchangePreviewPage();
     }
