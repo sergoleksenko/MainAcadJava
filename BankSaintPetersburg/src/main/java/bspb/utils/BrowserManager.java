@@ -79,7 +79,6 @@ public class BrowserManager {
     public static LoginPage openBspb() {
         logger.info("Go to url " + URL);
         getBrowser().get(URL);
-
         return new LoginPage();
     }
 }

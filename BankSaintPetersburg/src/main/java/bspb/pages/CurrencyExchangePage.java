@@ -9,10 +9,10 @@ import org.openqa.selenium.support.FindBy;
  */
 public class CurrencyExchangePage extends HeaderPanel {
 
-    @FindBy(xpath = "//select[@id = 'acc1']")
+    @FindBy(id = "acc1")
     private WebElement fromAccountField;
 
-    @FindBy(xpath = "//select[@id = 'acc2']")
+    @FindBy(id = "acc2")
     private WebElement toAccountField;
 
     @FindBy(xpath = "//input[@id = 'from-amount']")
@@ -28,7 +28,6 @@ public class CurrencyExchangePage extends HeaderPanel {
         logger.info("Getting account balance");
         String accountBalance = ElementHelper.getAccountFromComboBox(fromAccountField, accountCurrency).getText().split(":")[1].replace(" ", "").replace("\n", "");
         logger.info("Account balance is " + accountBalance);
-
         return Float.parseFloat(accountBalance.substring(0, accountBalance.length() - 1));
     }
 
@@ -38,14 +37,12 @@ public class CurrencyExchangePage extends HeaderPanel {
         ElementHelper.getAccountFromComboBox(toAccountField, accountCurrencyTo).click();
         sellingField.sendKeys(currencyAmount);
         detailsField.sendKeys(detailsMessage);
-
         return new CurrencyExchangePage();
     }
 
     public CurrencyExchangePreviewPage calculate() {
         logger.info("Clicking on calculate button");
         calculateButton.click();
-
         return new CurrencyExchangePreviewPage();
     }
 }

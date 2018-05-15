@@ -29,20 +29,18 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        if (iTestResult.getStatus() == ITestResult.FAILURE) {
-            File scrFile = ((TakesScreenshot) BrowserManager.getBrowser()).getScreenshotAs(OutputType.FILE);
-            File folder = new File(System.getProperty("user.dir") + File.separator + "screenshots" + File.separator + new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime()));
-            File scrName = new File(folder + File.separator + "errorScreenshots_" + iTestResult.getName() + " - " + Arrays.toString(iTestResult.getParameters()) + " - " + new SimpleDateFormat("HH_mm_ss").format(Calendar.getInstance().getTime()) + ".jpg");
+        File scrFile = ((TakesScreenshot) BrowserManager.getBrowser()).getScreenshotAs(OutputType.FILE);
+        File folder = new File(System.getProperty("user.dir") + File.separator + "screenshots" + File.separator + new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime()));
+        File scrName = new File(folder + File.separator + "errorScreenshots_" + iTestResult.getName() + " - " + Arrays.toString(iTestResult.getParameters()) + " - " + new SimpleDateFormat("HH_mm_ss").format(Calendar.getInstance().getTime()) + ".jpg");
 
-            if (!folder.exists()) {
-                folder.mkdirs();
-            }
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
 
-            try {
-                FileUtils.copyFile(scrFile, scrName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            FileUtils.copyFile(scrFile, scrName);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

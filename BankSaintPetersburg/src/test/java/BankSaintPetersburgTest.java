@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.text.DecimalFormat;
+import java.time.LocalTime;
 import java.util.Iterator;
 
 /**
@@ -39,7 +40,7 @@ public class BankSaintPetersburgTest {
     public void test01Login() {
         WelcomePage welcomePage = BrowserManager.openBspb().login().completeLogin();
         Assert.assertTrue(welcomePage.isUserNameDisplayed(), "There is no user name on the page");
-        Assert.assertEquals(USER_NAME, welcomePage.getUserName(), "User name on the page don't equal " + USER_NAME + ".");
+        Assert.assertEquals(welcomePage.getUserName(), USER_NAME, "User name on the page don't equal " + USER_NAME + ".");
     }
 
     @Test(description = "closing balance test")
@@ -53,12 +54,12 @@ public class BankSaintPetersburgTest {
         CurrencyExchangePage currencyExchangePage = BrowserManager.openBspb().login().completeLogin().openCurrencyExchangePage();
         String sellingAmount = new DecimalFormat("#0.00").format(currencyExchangePage.getAccountBalance("USD") * 0.1);
         String currencyExchangeSuccessMessage = currencyExchangePage.currencySelling("USD", "RUB", sellingAmount, "Details message for exchange").calculate().confirm().getCurrencyExchangeSuccessMessage();
-        Assert.assertEquals(CURRENCY_EXCHANGE_SUCCESS, currencyExchangeSuccessMessage, "Currency exchange was unsuccess.");
+        Assert.assertEquals(currencyExchangeSuccessMessage, CURRENCY_EXCHANGE_SUCCESS, "Currency exchange was unsuccess.");
     }
 
     @Test(dataProvider = "messageData", description = "messages test")
     public void test04Messages(String message) {
-        message = message + " - " + java.time.LocalTime.now();
+        message = message + " - " + LocalTime.now();
         MessagesPage messagesPage = BrowserManager.openBspb().login().completeLogin().openMessagesPage().newMessage().sendMessage(message);
         Assert.assertTrue(messagesPage.isMessageSent(message), "Message was not sending.");
     }

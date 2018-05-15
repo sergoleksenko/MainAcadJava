@@ -18,20 +18,17 @@ public abstract class HeaderPanel extends MenuPanel {
 
     public boolean isUserNameDisplayed() {
         logger.info("Checking whether user name displayed");
-
         return ElementHelper.isElementDisplayed(userName);
     }
 
     public String getUserName() {
         logger.info("Getting user name");
-
         return userName.getText();
     }
 
     public MessagesPage openMessagesPage() {
         logger.info("Opening Messages page");
         ActionHelper.clickWithJS(messagesButton);
-
         return new MessagesPage();
     }
 }

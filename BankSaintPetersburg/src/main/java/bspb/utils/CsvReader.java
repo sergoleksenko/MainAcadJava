@@ -36,7 +36,6 @@ public class CsvReader {
         } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
-
         return list.iterator();
     }
 }

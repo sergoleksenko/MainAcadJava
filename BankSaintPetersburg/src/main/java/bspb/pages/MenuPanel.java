@@ -37,7 +37,6 @@ public abstract class MenuPanel {
         logger.info("Opening Statements page");
         ActionHelper.moveToElement(accountsMenu);
         statementsMenuItem.click();
-
         return new AccountsStatementsPage();
     }
 
@@ -45,7 +44,6 @@ public abstract class MenuPanel {
         logger.info("Opening Currency Exchange page");
         ActionHelper.moveToElement(currencyMenu);
         exchangeMenuItem.click();
-
         return new CurrencyExchangePage();
     }
 }

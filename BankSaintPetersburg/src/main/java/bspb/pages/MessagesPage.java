@@ -21,7 +21,6 @@ public class MessagesPage extends HeaderPanel {
     public NewMessagePage newMessage() {
         logger.info("Opening new message page");
         newMessageButton.click();
-
         return new NewMessagePage();
     }
 

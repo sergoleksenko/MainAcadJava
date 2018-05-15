@@ -18,7 +18,6 @@ public class NewMessagePage extends HeaderPanel {
         logger.info("Sending new message");
         contentField.sendKeys(message);
         sendButton.click();
-
         return new MessagesPage();
     }
 }

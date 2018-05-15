@@ -29,14 +29,12 @@ public class LoginPage {
     public LoginPage login() {
         logger.info("Trying login into idemo.bspb.ru");
         loginButton.click();
-
         return new LoginPage();
     }
 
     public WelcomePage completeLogin() {
         logger.info("Complete login into idemo.bspb.ru");
         completeLoginButton.click();
-
         return new WelcomePage();
     }
 }
